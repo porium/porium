@@ -4,9 +4,9 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	glog "github.com/labstack/gommon/log"
-	"github.com/samikshan/kazan/backend/db"
-	"github.com/samikshan/kazan/backend/handlers"
-	"github.com/samikshan/kazan/backend/repositories"
+	"github.com/realChainLife/porium/db"
+	"github.com/realChainLife/porium/handlers"
+	"github.com/realChainLife/porium/repositories"
 )
 
 type HttpServer struct {
