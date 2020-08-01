@@ -1,2 +1,2 @@
-# porium-js-client
-Porium JS Client
+# porium-client
+Porium Client
