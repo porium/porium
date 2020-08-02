@@ -12,7 +12,7 @@ import (
 )
 
 func New() *gorm.DB {
-	cfg := backend.Cfg
+	cfg := porium.Cfg
 	// Connect to database
 	dbConnArgs := fmt.Sprintf(
 		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
