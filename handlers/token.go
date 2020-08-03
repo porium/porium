@@ -74,7 +74,7 @@ func (h *Handler) Token(c echo.Context) error {
 		}
 
 		// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
-		return []byte(backend.Cfg.JWT.SigningKey), nil
+		return []byte(porium.Cfg.JWT.SigningKey), nil
 	})
 
 	if err != nil {
