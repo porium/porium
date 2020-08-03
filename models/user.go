@@ -41,7 +41,7 @@ func (u *User) BeforeCreate(scope *gorm.Scope) error {
 // }
 
 // func (u *User) FFSCreate() (string, string, error) {
-// 	ma, err := multiaddr.NewMultiaddr(backend.Cfg.PowGrpcHost)
+// 	ma, err := multiaddr.NewMultiaddr(porium.Cfg.PowGrpcHost)
 // 	if err != nil {
 // 		log.WithError(err).Error("error parsing multiaddress")
 // 		return "", "", err
