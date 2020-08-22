@@ -6,8 +6,8 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
-	"github.com/realChainLife/porium"
-	"github.com/realChainLife/porium/models"
+	"github.com/porium/porium"
+	"github.com/porium/porium/models"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -74,7 +74,7 @@ func (h *Handler) Token(c echo.Context) error {
 		}
 
 		// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
-		return []byte(porium.Cfg.JWT.SigningKey), nil
+		return []byte(backend.Cfg.JWT.SigningKey), nil
 	})
 
 	if err != nil {

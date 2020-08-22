@@ -1,16 +1,16 @@
-package porium
+package backend
 
 import (
 	log "github.com/sirupsen/logrus"
 	flag "github.com/spf13/pflag"
 	"github.com/spf13/viper"
 
-	"github.com/realChainLife/porium/logging"
+	"github.com/samikshan/kazan/backend/logging"
 )
 
 const (
 	defaultloglevel = "debug"
-	defaultHTTPPort = 9050
+	defaultHTTPPort = 1323
 )
 
 type Constants struct {
@@ -58,7 +58,7 @@ func init() {
 }
 
 func initFlags() {
-	flag.String("config", "", "Configuration file for Porium")
+	flag.String("config", "", "Configuration file for LetsJam")
 	flag.String(logging.LevelFlag, defaultloglevel, logging.LevelHelp)
 }
 
@@ -68,7 +68,7 @@ func initViper() (Constants, error) {
 		return Constants{}, err
 	}
 
-	viper.SetConfigName("porium.config") // Configuration fileName without the .TOML or .YAML extension
+	viper.SetConfigName("kazan-backend.config") // Configuration fileName without the .TOML or .YAML extension
 	viper.AddConfigPath(".")                    // Search the root directory for the configuration file
 
 	if confFile := viper.GetString("config"); confFile != "" {

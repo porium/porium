@@ -7,8 +7,8 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/realChainLife/porium"
-	"github.com/realChainLife/porium/models"
+	"github.com/porium/porium"
+	"github.com/porium/porium/models"
 )
 
 func New() *gorm.DB {
@@ -39,5 +39,7 @@ func AutoMigrate(db *gorm.DB) {
 	db.AutoMigrate(
 		&models.User{},
 		&models.Auth{},
+		&models.Track{},
+		&models.Instrument{},
 	)
 }

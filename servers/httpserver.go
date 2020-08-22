@@ -4,9 +4,9 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	glog "github.com/labstack/gommon/log"
-	"github.com/realChainLife/porium/db"
-	"github.com/realChainLife/porium/handlers"
-	"github.com/realChainLife/porium/repositories"
+	"github.com/porium/porium/db"
+	"github.com/porium/porium/handlers"
+	"github.com/porium/porium/repositories"
 )
 
 type HttpServer struct {
@@ -20,10 +20,12 @@ func NewHTTPSv() *HttpServer {
 
 	userRepo := repositories.NewUserRepo(dbConn)
 	authRepo := repositories.NewAuthRepo(dbConn)
+	trackRepo := repositories.NewTrackRepo(dbConn)
+	insRepo := repositories.NewInstrumentRepo(dbConn)
 
 	sv := &HttpServer{
 		E: echo.New(),
-		H: handlers.New(userRepo, authRepo),
+		H: handlers.New(userRepo, authRepo, trackRepo, insRepo),
 	}
 
 	sv.E.Use(middleware.Logger())
@@ -37,13 +39,12 @@ func NewHTTPSv() *HttpServer {
 }
 
 func (sv *HttpServer) setupRoutes() {
-	// sv.E.POST("/signup", sv.H.Signup)
-	// sv.E.POST("/login", sv.H.Login)
-	// sv.E.POST("/token", sv.H.Token)
-
 	sv.E.POST("/authentication", sv.H.SetNewAuth)
 	sv.E.GET("/authentication", sv.H.GetAuth)
+	sv.E.GET("/user", sv.H.GetSender)
 	sv.E.POST("/user", sv.H.CreateNewUser)
-
-	// sv.E.GET("/ws/userauth", sv.H.UserAuth)
+	sv.E.PUT("/user/:id", sv.H.UpdateUser)
+	sv.E.GET("/feed", sv.H.GetUserFeed)
+	sv.E.POST("/tracks", sv.H.NewTrack)
+	sv.E.GET("/profiles/:id", sv.H.GetProfile)
 }

@@ -5,12 +5,12 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/realChainLife/porium"
-	"github.com/realChainLife/porium/servers"
+	"github.com/porium/porium"
+	"github.com/porium/porium/servers"
 )
 
 func main() {
-	serverURL := fmt.Sprintf(":%d", porium.Cfg.HTTPPort)
+	serverURL := fmt.Sprintf(":%d", backend.Cfg.HTTPPort)
 
 	sv := servers.NewHTTPSv()
 	log.Fatal(sv.E.Start(serverURL))
