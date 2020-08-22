@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/realChainLife/porium/models"
+	"github.com/porium/porium/models"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/labstack/echo"
