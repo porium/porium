@@ -5,7 +5,7 @@ import (
 	flag "github.com/spf13/pflag"
 	"github.com/spf13/viper"
 
-	"github.com/samikshan/kazan/backend/logging"
+	"github.com/porium/porium/logging"
 )
 
 const (
@@ -68,7 +68,7 @@ func initViper() (Constants, error) {
 		return Constants{}, err
 	}
 
-	viper.SetConfigName("kazan-backend.config") // Configuration fileName without the .TOML or .YAML extension
+	viper.SetConfigName("porium.config") // Configuration fileName without the .TOML or .YAML extension
 	viper.AddConfigPath(".")                    // Search the root directory for the configuration file
 
 	if confFile := viper.GetString("config"); confFile != "" {

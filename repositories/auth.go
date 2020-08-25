@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"github.com/jinzhu/gorm"
-	"github.com/samikshan/kazan/backend/models"
+	"github.com/porium/porium/models"
 )
 
 type AuthRepo struct {
