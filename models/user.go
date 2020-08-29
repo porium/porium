@@ -8,7 +8,7 @@ type User struct {
 	gorm.Model
 	Username      string       `gorm:"unique;not null"`
 	WalletAddress string       `gorm:"unique;not null"`
-	Courses       []Course      `gorm:"foreignkey:ProtocolID"`
+	Courses       []Course      `gorm:"foreignkey:courseID"`
 	LearningPath  []LearningPath `gorm:"many2many:users_learningpath"`
 	DisplayName   string
 }
