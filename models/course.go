@@ -12,16 +12,16 @@ type Course struct {
 	LevelID	      *Course
 	nForks        uint         `gorm:"default:0"`
 	Forks         []Course      `gorm:"foreignkey:LevelID"`
-	Path	      []Path `gorm:"many2many:courses_path"`
+	LearningPath  []LearningPath `gorm:"many2many:courses_learningpath"`
 }
 
 func (t *Course) AfterCreate(tx *gorm.DB) error {
-	return tx.Model(t).Association("Path").Append(t.paths).Error
+	return tx.Model(t).Association("LearningPath").Append(t.learningpaths).Error
 }
 
 type CourseRepo interface {
-	GetByCoursekID(id uint) (*Course, error)
+	GetByCourseID(id uint) (*Course, error)
 	Create(t *Course, Protocol *User) error
 	Update(t *Course error
-	GetCourseByPath(course []string) ([]*Path, error)
+	GetCourseByLearningPath(course []string) ([]*LearningPath, error)
 }
